@@ -1,0 +1,14 @@
+body {
+    background-color: #e9e9e9e3;
+}
+
+.menu {
+    background-color: #b6b6b6; 
+    padding: 10px 10px 10px 10px;  
+    display: flex; 
+    align-items: center;
+}
+
+#linha {
+    background-color: black;
+}

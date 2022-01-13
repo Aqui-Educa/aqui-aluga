@@ -15,7 +15,7 @@
 
         <img src="imagens/logo.png" style="width:80px;">
 
-        <span style="margin-left: 20px; font-size: 18px;">
+        <span style="margin-left: 20px; font-size: 20px;">
             <a href="home.html">Home</a> | 
             <a href="categoria.html">Categoria |</a>
             <a href="veiculo.html">Veículo</a> |
@@ -34,29 +34,44 @@
 
     <form>
             
-    <fieldset>
+    
     <h2>Cadastro de Categorias</h2>
     <br>
-
-    Sigla do Grupo:<br>
-    <input type="text" siglagrupo="cSGrupo" id="iSGrupo" size="4" maxlength="4" placeholder="Ex. GP01"><br>
+    <div>
+        Sigla do Grupo:<br>
+        <input type="text" id="iSgrupo" size="4" maxlength="4" placeholder="Ex. GP01"><br>
     <br>
+    </div>    
     
-    Nome do Grupo:<br>
-    <input type="text" nomegrupo="cNomeGrupo" id="iNomeGrupo" size="80" maxlength="20" placeholder="Ex. Grupo B - Compacto Com Ar"><br>
-    <br>
+    <div>
+        Nome do Grupo:<br>
+        <input type="text" id="iNomeGrupo" size="80" maxlength="20" placeholder="Ex. Grupo B - Compacto Com Ar"><br>
+        <br>
+    </div>
 
-    Descrição do Grupo:<br>
-    <input type="text" descgrupo="cDescGrupo" id="iDescGrupo" size="80" maxlength="80" placeholder="Ex. 4 portas,Air bag,ABS,1 mala(s) grande(s),1 mala(s) pequena(s),5 pessoas"><br>
-    <br>
+    <div>
+        Descrição do Grupo:<br>
+        <input type="text" id="iDescGrupo" size="80" maxlength="80" placeholder="Ex. 4 portas,Air bag,ABS,1 mala(s) grande(s),1 mala(s) pequena(s),5 pessoas"><br>
+        <br>
+    </div>
+    
+    <div>
+        Composição do Grupo:<br>
+        <input type="text" id="iCompGrupo" size="80" maxlength="80" placeholder="Ex. Veículo similar a: Fiat Uno 1.0, dentre outros."><br>
+        <br>
+    </div>
+    
 
-    Composição do Grupo:<br>
-    <input type="text" compgrupo="cCompGrupo" id="iCompGrupo" size="80" maxlength="80" placeholder="Ex. Veículo similar a: Fiat Uno 1.0, dentre outros."><br>
-    <br>
-
-    <button>Salvar</button>
+    <button onclick="inserir()">Salvar</button>
     <button>Voltar</button>
-    </fieldset>
+
 
     </body>
     </html>
+
+    <script language = "javascript">
+        function inserir() {
+            var iSgrupo = document.getElementById('iSgrupo').value 
+        }
+
+    </script>

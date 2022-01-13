@@ -5,18 +5,20 @@
     <meta charset="UTF-8">
     <title>Locadora de Veículos</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+
 </head>
 
 <body style="margin: 0px 0px 0px 0px;">
 
 
-    <div style="background-color: #b6b6b6; padding: 10px 10px 10px 10px;  display: flex; align-items: center;">
+    <div class="menu">
 
         <img src="imagens/logo.png" style="width:80px;">
 
         <span style="margin-left: 20px; font-size: 20px;">
-            <a href="home.html">Home</a> | 
+            <a href="home.html">Home</a> |
             <a href="categoria.html">Categoria</a> |
             <a href="veiculo.html">Veículo</a> |
             <a href="loja.html">Loja</a> |
@@ -27,7 +29,96 @@
             <a href="vendas.html">Vendas</a> |
             <a href="formapagamento.html">Forma de pagamento</a>
         </span>
-        
     </div>
-    </body>
-    </html>
+    <div class="gridVeiculos1">
+        <div>
+            Ret Sem Ar<br>
+            <img src="./imagens/Ret Sem Ar.jpg">
+        </div>
+        <div>
+            Ret Com Ar<br>
+            <img src="./imagens/Ret Com Ar.jpg">
+        </div>
+        <div>
+            Sedan Econômico<br>
+            <img src="./imagens/Sedan Econômico.jpg">
+        </div>
+        <div>
+            Sedan Intermediário<br>
+            <img src="./imagens/Sedan Intermediário.jpg">
+        </div>
+    
+        <div>
+            Suv Com Ar Automático<br>
+            <img src="./imagens/Suv Com Ar Automático.jpg">
+        </div>
+        <div>
+            Executivo<br>
+            <img src="./imagens/Executivo.jpg">
+        </div>
+        <div>
+            Executivo de Luxo<br>
+            <img src="./imagens/Executivo de Luxo.jpg">
+        </div>
+
+    </div>
+    <div class="box">
+        <form name="Locação" class="form3" action="processa.php" method="POST" accept-charset="UTF-8">
+
+            <div class="form4">
+                <p>Local de Retirada:</p>
+                <select placeholder="Selecione o local de retirada:">
+                    <option value="agencia Salvador Shopping">Agência Salvador Shopping</option>
+                    <option value="agencia Aeroporto Salvador">Agência Aeroporto de Salvador</option>
+                    <option value="agencia Rio Vermelho">Agência Rio Vermelho</option>
+                    <option value="agencia Pelourinho">Agência Pelourinho</option>
+                </select>
+            </div>
+            <div class="form4">
+                <label for="data">
+                    <p>Data de retirada:</p>
+                </label>
+                <input type="date" id="data" name="dataNasc" required>
+
+            </div>
+            <div class="form4">
+                <label for="hora">
+                    <p>Horário de retirada:</p>
+                </label>
+                <input type="time" id="data" name="horaCadast" required>
+            </div>
+            <div class="form4">
+                <p>Categoria do veículo:</p>
+                <select required>
+                    <option value="" disabled selected class="selectInvalid">Selecione aqui...</option>
+                    <option value="A">Categoria A - Compacto Sem Ar - R$ 135,00</option>
+                    <option value="B">Categoria B - Compacto Com Ar - R$ 137,00</option>
+                    <option value="C">Categoria C - Sedan Econômico - R$ 171,00</option>
+                    <option value="D">Categoria D - Sedan intermediário - R$ 187,00</option>
+                    <option value="E">Categoria E - SUV Com Ar Automático - R$ 288,00</option>
+                    <option value="F">Categoria F - Executivo - R$ 359,00</option>
+                    <option value="G">Categoria G - Executivo de Luxo - R$ 640,00</option>
+                </select>
+            </div>
+            <div class="form4">
+                <label>
+                    <p>Código Promocional:</p>
+                </label>
+                <input type="text" name="Cupom" placeholder="Exemplo: AQUIALUGA2022">
+            </div>
+            <div class="form4">
+                <label for="coment">
+                    <p>Informações Adicionais: [máx de 300 caract.]</p>
+                </label>
+                <textarea rows="4" cols="50" name="comentarios" id="coment" maxlength="300" minlength="20" placeholder="Descreva aqui dúvidas, solicitações adicionais ou situações adversas. Após análise, nossa equipe de suporte entrará em contato."></textarea>
+            </div>
+
+            <input type="submit" value="Enviar" class="button" /><br>
+        </form>
+
+    </div>
+
+
+</body>
+
+</html>

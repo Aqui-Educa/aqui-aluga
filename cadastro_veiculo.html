@@ -15,7 +15,7 @@
 
         <img src="imagens/logo.png" style="width:80px;">
 
-        <span style="margin-left: 20px; font-size: 18px;">
+        <span style="margin-left: 20px; font-size: 20px;">
             <a href="home.html">Home</a> | 
             <a href="categoria.html">Categoria |</a>
             <a href="veiculo.html">Veículo</a> |
@@ -40,7 +40,7 @@
     
         <fieldset>
             Sigla do Grupo: <br>
-            <input type="text" siglagrupo="cSGrupo" id="iSGrupo" size="40" maxlength="4" placeholder="Informe a SIGLA do Grupo"><br>
+            <input type="text" siglagrupo="cGrupo" id="iGrupo" size="40" maxlength="4" placeholder="Informe a SIGLA do Grupo"><br>
             <br>
             Marca: <br>
             <input type="text" marca="cMarca" id="iMarca" size="40" maxlength="30" placeholder="Informe a MARCA do veículo"><br>
@@ -60,8 +60,8 @@
         </fieldset>
        
     
-    <button>Salvar</button>
-    <button>Voltar</button>
+    <button onclick="inserir()">Salvar</button>
+    <button onclick="retornar()">Voltar</button>
     </form>>
     </div>
 
@@ -69,3 +69,10 @@
     
     </body>
     </html>
+
+    <script language = "javascript">
+        function inserir() {
+            var iSgrupo = document.getElementById('iGrupo').value 
+        }
+
+    </script>

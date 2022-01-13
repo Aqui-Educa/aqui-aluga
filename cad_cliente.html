@@ -29,34 +29,49 @@
             <a href="formapagamento.html">Forma de pagamento</a>
         </span>
     </div>
+<br>
+    <body>
+
+        <h1>Cadastro de Clientes</h1>
     
-    <br>
-
-    <h1>Clientes</h1>
+        Nome:
+        <br>
+        <input type="text" id="cpf">
+        <br><br>
     
-    <div style="text-align: end; margin-right: 50px;">
-        <a href="cad_cliente.html">
-            <img src="imagens/insert_icon.png" width="30">
-        </a>
-    </div>
+        CPF:
+        <br>
+        <input type="text" id="nome">
+        <br><br>
+    
+        Endereço:
+        <br>
+        <input type="text" id="idade">
+        <br><br>
+    
+        Bairro:
+        <br>
+        <input type="text" id="bairro">
+        <br><br>
+    
+        Habilitação:
+        <br>
+        <input type="text" id="comorbidade">
+        <br><br>
 
-    <br>
-
-    <table id="table" class="table">
-        <thead>
-            <tr>
-                <th scope="col">Nome</th>
-                <th scope="col">CPF</th>
-                <th scope="col">Endereço</th>
-                <th scope="col">Habilitação</th>
-                <th scope="col">Telefone</th>
-                <th scope="col"></th>
-            </tr>
-        </thead>
-        <!-- Bem aqui será gerada a tag TR que indica a linha que precisaremos gerar repetição com base
-            na lista que iremos obter da API para relacionar todos os clientes existentes -->
-    </table>
-</body>
-</html>
+        Telefone:
+        <br>
+        <input type="text" id="comorbidade">
+        <br><br>
+    
+    
+    
+        <button onclick="inserir()">Salvar</button>
+    
+        <a href="cliente.html">
+            <button>Voltar</button>
+        </a>        
+    
     </body>
     </html>
+    

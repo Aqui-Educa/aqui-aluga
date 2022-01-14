@@ -1,4 +1,5 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <!--Página Principal da LOCADORA DE VEÍCULOS - AQUI ALUGA E VENDE-->
 
 <head>
@@ -10,7 +11,7 @@
 
 </head>
 
-<body style="margin: 0px 0px 0px 0px;">
+<body onload="listar()" style="margin: 0px 0px 0px 0px;" > 
 
 
     <div class="menu">
@@ -47,7 +48,7 @@
             Sedan Intermediário<br>
             <img src="./imagens/Sedan Intermediário.jpg">
         </div>
-    
+
         <div>
             Suv Com Ar Automático<br>
             <img src="./imagens/Suv Com Ar Automático.jpg">
@@ -62,63 +63,89 @@
         </div>
 
     </div>
-    <div class="box">
-        <form name="Locação" class="form3" action="processa.php" method="POST" accept-charset="UTF-8">
-
-            <div class="form4">
-                <p>Local de Retirada:</p>
-                <select placeholder="Selecione o local de retirada:">
-                    <option value="agencia Salvador Shopping">Agência Salvador Shopping</option>
-                    <option value="agencia Aeroporto Salvador">Agência Aeroporto de Salvador</option>
-                    <option value="agencia Rio Vermelho">Agência Rio Vermelho</option>
-                    <option value="agencia Pelourinho">Agência Pelourinho</option>
-                </select>
-            </div>
-            <div class="form4">
-                <label for="data">
-                    <p>Data de retirada:</p>
-                </label>
-                <input type="date" id="data" name="dataNasc" required>
-
-            </div>
-            <div class="form4">
-                <label for="hora">
-                    <p>Horário de retirada:</p>
-                </label>
-                <input type="time" id="data" name="horaCadast" required>
-            </div>
-            <div class="form4">
-                <p>Categoria do veículo:</p>
-                <select required>
-                    <option value="" disabled selected class="selectInvalid">Selecione aqui...</option>
-                    <option value="A">Categoria A - Compacto Sem Ar - R$ 135,00</option>
-                    <option value="B">Categoria B - Compacto Com Ar - R$ 137,00</option>
-                    <option value="C">Categoria C - Sedan Econômico - R$ 171,00</option>
-                    <option value="D">Categoria D - Sedan intermediário - R$ 187,00</option>
-                    <option value="E">Categoria E - SUV Com Ar Automático - R$ 288,00</option>
-                    <option value="F">Categoria F - Executivo - R$ 359,00</option>
-                    <option value="G">Categoria G - Executivo de Luxo - R$ 640,00</option>
-                </select>
-            </div>
-            <div class="form4">
-                <label>
-                    <p>Código Promocional:</p>
-                </label>
-                <input type="text" name="Cupom" placeholder="Exemplo: AQUIALUGA2022">
-            </div>
-            <div class="form4">
-                <label for="coment">
-                    <p>Informações Adicionais: [máx de 300 caract.]</p>
-                </label>
-                <textarea rows="4" cols="50" name="comentarios" id="coment" maxlength="300" minlength="20" placeholder="Descreva aqui dúvidas, solicitações adicionais ou situações adversas. Após análise, nossa equipe de suporte entrará em contato."></textarea>
-            </div>
-
-            <input type="submit" value="Enviar" class="button" /><br>
-        </form>
-
+    <div style="text-align: end; margin-right: 50px; margin-top: 20px;">
+        <a href="locacao-cadastro-inserir.html">
+            <img src="imagens/insert_icon.png" width="30">
+        </a>
     </div>
+    <br>
 
+    <table id="table" class="table">
+        <thead>
+            <tr>
+                <th scope="col">agencia</th>
+                <th scope="col">dataRetirada</th>
+                <th scope="col">horario</th>
+                <th scope="col">categoria</th>
+                <th scope="col">cupom</th>
+                <th scope="col">comentario</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <!-- Bem aqui será gerada a tag TR que indica a linha que precisaremos gerar repetição com base
+            na lista que iremos obter da API para relacionar todos os clientes existentes -->
+    </table>
 
 </body>
 
+
 </html>
+
+<script language="javascript">
+    function listar() {
+
+        //Enviando para a API o json 
+        //construído na etapa anterior
+        fetch('http://127.0.0.1:5000/locacao/listar',
+            {
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Origin': '*'
+                },
+                method: "GET" //Veja que aqui eu informo o verbo da requisição REST
+            })
+            .then(function (res) {
+                res.json()
+                    .then(lista => {
+                        console.log(lista)
+                        inserirLinhas(lista)
+                    })
+            })
+            .catch(function (res) { console.log(res) })
+    }
+
+    function inserirLinhas(lista) {
+        for (var i = 0; i < lista.length; i++) {
+            var row = $('<tr/>');
+            row.append($('<td/>').html(lista[i]['dataRetirada']));
+            row.append($('<td/>').html(lista[i]['horario']));
+            row.append($('<td/>').html(lista[i]['categoria']));
+            row.append($('<td/>').html(lista[i]['cupom']));
+            row.append($('<td/>').html(lista[i]['comentario']));
+            row.append($('<td/>').html('<img src="images/delete_icon.png" width="30" onclick="deletar(' + i + ')" style="cursor: pointer;">'));
+            $('#table').append(row);
+        }
+    }
+
+    function deletar(nroLinha) {
+        fetch('http://127.0.0.1:5000/locacao/deletar/' + String(nroLinha),
+            {
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Origin': '*'
+                },
+                method: "DELETE"
+            })
+            .then(function (res) {
+                res.json()
+                    .then(data => {
+                        console.log('OK')
+                        document.location.reload(true);
+                    })
+            })
+            .catch(function (res) { console.log(res) })
+    }
+
+</script>

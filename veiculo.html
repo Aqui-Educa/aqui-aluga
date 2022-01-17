@@ -3,16 +3,15 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Locadora de Veículos</title>
+    <title>LOCADORA DE VEÍCULOS</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-<link rel="stylesheet" href="css/style.css">
 </head>
 
 <body style="margin: 0px 0px 0px 0px;">
 
 
-    <div class="menu">
+    <div style="background-color: #96d1f3; padding: 8px 8px 8px 8px;  display: flex; align-items: center;">
 
         <img src="imagens/logo.png" style="width:80px;">
 
@@ -30,5 +29,34 @@
         </span>
         
     </div>
+
+    <h1>Veículos</h1>
+    <br>
+
+    <div style="text-align: end; margin-right: 50px;">
+        <a href="cadastro_veiculo.html">
+            <img src="imagens/insert_icon.png" width="30">
+        </a>
+    </div>
+
+    <br>
+
+    <table id="table" class="table">
+        <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Sigla do Grupo</th>
+                <th scope="col">Marca</th>
+                <th scope="col">Modelo</th>
+                <th scope="col">Ano</th>
+                <th scope="col">Cor</th>
+                <th scope="col">Placa</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <!-- Bem aqui será gerada a tag TR que indica a linha que precisaremos gerar repetição com base
+            na lista que iremos obter da API para relacionar todos os clientes existentes -->
+    </table>
+
     </body>
     </html>

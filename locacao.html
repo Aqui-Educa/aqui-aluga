@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 <!--Página Principal da LOCADORA DE VEÍCULOS - AQUI ALUGA E VENDE-->
@@ -148,4 +149,156 @@
             .catch(function (res) { console.log(res) })
     }
 
+=======
+<!DOCTYPE html>
+<html lang="en">
+<!--Página Principal da LOCADORA DE VEÍCULOS - AQUI ALUGA E VENDE-->
+
+<head>
+    <meta charset="UTF-8">
+    <title>Locadora de Veículos</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body onload="listar()" style="margin: 0px 0px 0px 0px;" > 
+
+
+    <div class="menu">
+
+        <img src="imagens/logo.png" style="width:80px;">
+
+        <span style="margin-left: 20px; font-size: 20px;">
+            <a href="home.html">Home</a> |
+            <a href="categoria.html">Categoria</a> |
+            <a href="veiculo.html">Veículo</a> |
+            <a href="loja.html">Loja</a> |
+            <a href="cliente.html">Cliente</a> |
+            Locação |
+            <a href="parceiro.html">Parceiro</a> |
+            <a href="itens.html">Itens de contrato</a> |
+            <a href="vendas.html">Vendas</a> |
+            <a href="formapagamento.html">Forma de pagamento</a>
+        </span>
+    </div>
+    <div class="gridVeiculos1">
+        <div>
+            Ret Sem Ar<br>
+            <img src="./imagens/Ret Sem Ar.jpg">
+        </div>
+        <div>
+            Ret Com Ar<br>
+            <img src="./imagens/Ret Com Ar.jpg">
+        </div>
+        <div>
+            Sedan Econômico<br>
+            <img src="./imagens/Sedan Econômico.jpg">
+        </div>
+        <div>
+            Sedan Intermediário<br>
+            <img src="./imagens/Sedan Intermediário.jpg">
+        </div>
+
+        <div>
+            Suv Com Ar Automático<br>
+            <img src="./imagens/Suv Com Ar Automático.jpg">
+        </div>
+        <div>
+            Executivo<br>
+            <img src="./imagens/Executivo.jpg">
+        </div>
+        <div>
+            Executivo de Luxo<br>
+            <img src="./imagens/Executivo de Luxo.jpg">
+        </div>
+
+    </div>
+    <div style="text-align: end; margin-right: 50px; margin-top: 20px;">
+        <a href="locacao-cadastro-inserir.html">
+            <img src="imagens/insert_icon.png" width="30">
+        </a>
+    </div>
+    <br>
+
+    <table id="table" class="table">
+        <thead>
+            <tr>
+                <th scope="col">agencia</th>
+                <th scope="col">dataRetirada</th>
+                <th scope="col">horario</th>
+                <th scope="col">categoria</th>
+                <th scope="col">cupom</th>
+                <th scope="col">comentario</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <!-- Bem aqui será gerada a tag TR que indica a linha que precisaremos gerar repetição com base
+            na lista que iremos obter da API para relacionar todos os clientes existentes -->
+    </table>
+
+</body>
+
+
+</html>
+
+<script language="javascript">
+    function listar() {
+
+        //Enviando para a API o json 
+        //construído na etapa anterior
+        fetch('http://127.0.0.1:5000/locacao/listar',
+            {
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Origin': '*'
+                },
+                method: "GET" //Veja que aqui eu informo o verbo da requisição REST
+            })
+            .then(function (res) {
+                res.json()
+                    .then(lista => {
+                        console.log(lista)
+                        inserirLinhas(lista)
+                    })
+            })
+            .catch(function (res) { console.log(res) })
+    }
+
+    function inserirLinhas(lista) {
+        for (var i = 0; i < lista.length; i++) {
+            var row = $('<tr/>');
+            row.append($('<td/>').html(lista[i]['dataRetirada']));
+            row.append($('<td/>').html(lista[i]['horario']));
+            row.append($('<td/>').html(lista[i]['categoria']));
+            row.append($('<td/>').html(lista[i]['cupom']));
+            row.append($('<td/>').html(lista[i]['comentario']));
+            row.append($('<td/>').html('<img src="images/delete_icon.png" width="30" onclick="deletar(' + i + ')" style="cursor: pointer;">'));
+            $('#table').append(row);
+        }
+    }
+
+    function deletar(nroLinha) {
+        fetch('http://127.0.0.1:5000/locacao/deletar/' + String(nroLinha),
+            {
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Origin': '*'
+                },
+                method: "DELETE"
+            })
+            .then(function (res) {
+                res.json()
+                    .then(data => {
+                        console.log('OK')
+                        document.location.reload(true);
+                    })
+            })
+            .catch(function (res) { console.log(res) })
+    }
+
+>>>>>>> 5727de72e16da90265cd6700aa2c91f2025545bb
 </script>

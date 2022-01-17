@@ -38,32 +38,43 @@
     <br>
 
     Id:<br>
-    <input type="text">
+    <input type="text" id="id">
     <br><br>
 
-    Id cliente:<br>
-    <input type="text">
+    Cliente:<br>
+    <input type="text" id="cliente">
     <br><br>
 
-    Id veículo:<br>
-    <input type="text">
+    Veículo:<br>
+    <input type="text" id="veiculo">
     <br><br>
 
-    Id pagamento:<br>
-    <input type="text">
+    Pagamento:<br>
+    <input type="text" id="pagamento">
     <br><br>
 
     Data da venda:<br>
-    <input type="text">
+    <input type="text" id="dataPagamento">
     <br><br>
 
     Valor:<br>
-    <input type="text">
+    <input type="text" id="valor">
     <br><br>
 
-    <button>Salvar</button>
+    <button onclick="inserir()">Salvar</button>
     <button>Voltar</button>
 
 
     </body>
     </html>
+
+<script language = "javascript">
+    function inserir() {
+        var id = document.getElementById("id").value
+        var cliente = document.getElementById("cliente").value
+        var veiculo = document.getElementById("veiculo").value
+        var pagamento = document.getElementById("pagamento").value
+        var data = document.getElementById("data").value
+        var valor = document.getElementById("valor").value
+    }
+</script>
